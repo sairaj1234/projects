@@ -6,13 +6,18 @@ model=pickle.load(open('model.pkl','rb'))
 @app.route('/')
 def welcome():
     return render_template('index.html')
+
 @app.route('/submit',methods=['POST'])
 def predt():
-    
-    fea=float(request.form['salary'])
-    pred=[[fea]]
-    predicition=model.predict(pred)[0][0]
-    return render_template('index.html',res='salary is {:.2f}'.format(predicition))
+    if request.form['salary'].isnumeric():
+        fea=float(request.form['salary'])
+        pred=[[fea]]
+        predicition=model.predict(pred)[0][0]
+        return render_template('index.html',res='salary is {:.2f}'.format(predicition))
+    else:
+        return render_template('index.html',error='Error Occured. Enter Valid Number')
+
+
 
 
     
