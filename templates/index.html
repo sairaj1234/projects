@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html>
-<title>
-    salary prediction
-</title>
-        <body>
-            <h1>salary prediction </h1>
+    <head>
+        <title>salary prediction</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    </head>
+        <body class="container">
+            <div>
+                <h1 class="text-center">salary prediction </h1>
+            
+                    <!--p class="text-end">- By SaiRaj</p-->
+            
+                
+            </div>
+            <hr>
+            <br>
+            <br>
+            <br>
             <center>
                 <form action="/submit" method="POST">
                     <h2>Enter the number of Years Experience</h2>
                     <br>
                 <input type="text" placeholder="enter the number" name="salary"></br>
                 
-                <br><button>submit</button></br>
+                <br><button class="btn btn-success">Predict</button></br>
             </form>
                 <br>
-                {{res}}
+                {% if error %}
+                <h2><p class="text-danger">{{error}}</p></h2>
+                {% endif %}
+                {% if res %}
+                <h2><p class="text-success">{{res}}</p></h2>
+                {% endif %}
+               
         
         </br>
             </center>
