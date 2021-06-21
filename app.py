@@ -9,12 +9,12 @@ def welcome():
 
 @app.route('/submit',methods=['POST'])
 def predt():
-    if request.form['salary'].isnumeric():
+    try:
         fea=float(request.form['salary'])
         pred=[[fea]]
         predicition=model.predict(pred)[0][0]
         return render_template('index.html',res='salary is {:.2f}'.format(predicition))
-    else:
+    except:
         return render_template('index.html',error='Error Occured. Enter Valid Number')
 
 
